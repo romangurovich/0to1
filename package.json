@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "build": "NODE_ENV='production' webpack",
+    "start": "webpack-dev-server"
+  },
+  "devDependencies": {
+    "@types/p5": "^1.7.0",
+    "css-loader": "^6.8.1",
+    "file-loader": "^6.2.0",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "p5": "^1.7.0"
+  }
+}

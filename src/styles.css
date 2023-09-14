@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 70px;
+    height: 100vh;
+    margin: 0;
+    background-color: #f6f7e6;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #f6f7e6 6px ), repeating-linear-gradient( #7c81f955, #7c81f90f );
+}
+
+img {
+    cursor: pointer;
+}
+
+img:hover {
+    transform: scale(1.3);
+}
+
+.number-container {
+    justify-content: center;
+}
+
+.links {
+    justify-content: space-evenly;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+  }

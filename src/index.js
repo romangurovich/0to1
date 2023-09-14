@@ -2,6 +2,8 @@
 import p5 from 'p5';
 import './styles.css';
 
+const root = process.env.NODE_ENV === 'production' ? '../0to1' : '..';
+
 let angle = 0; // Initial rotation angle
 let width = 524;
 let height = 524;
@@ -11,7 +13,7 @@ let layer;
 
 let sketch = (p) => {    
   p.preload = () => {
-    font = p.loadFont('../fonts/JenrivTitling-Regular.otf')
+    font = p.loadFont(`${root}/fonts/JenrivTitling-Regular.otf`)
   };
 
   p.setup = () =>{

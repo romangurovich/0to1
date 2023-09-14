@@ -1,4 +1,5 @@
 const path = require('path');
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
     entry: './src/index.js',
@@ -11,9 +12,19 @@ module.exports = {
         static: path.join(__dirname, 'dist'),
         https: false,
     },
-    // optimization: {
-    //     runtimeChunk: 'single'
-    // },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                extractComments: false,
+                terserOptions: {
+                    format: {
+                        comments: false,
+                    },
+                },
+            }),
+        ],
+    },
     module: {
         rules: [
             {

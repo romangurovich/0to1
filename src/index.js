@@ -2,7 +2,7 @@
 import p5 from 'p5';
 import './styles.css';
 
-const root = process.env.NODE_ENV === 'production' ? '../0to1' : '..';
+const root = '..';
 
 let angle = 0; // Initial rotation angle
 let width = 524;

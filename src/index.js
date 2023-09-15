@@ -2,14 +2,12 @@ import p5 from 'p5';
 import mobileCheck from './mobileCheck';
 import './styles.css';
 
-const animationReadyEvent = new Event("animation-ready");
+const animationReadyEvent = new Event('animation-ready');
 
 const listenForAnimationStart = () => {
-  document.addEventListener("animation-ready", () => {
-    console.log("listened ", Date.now());
+  document.addEventListener('animation-ready', () => {
     const links = document.querySelector('.links');
     links.style.visibility = 'visible';
-    console.log(links);
   }, { once: true });
 };
 
@@ -36,9 +34,6 @@ let sketch = (p) => {
     p.frameRate(isMobile ? FRAMERATE / MOBILE_PENALTY : FRAMERATE);
     p.createCanvas(width, height, P5.WEBGL, document.getElementById('myCanvas'));
     layer = p.createFramebuffer();
-
-    console.log("before ", document.querySelector('.links').cloneNode());
-    console.log("dispatched ", Date.now());
     document.dispatchEvent(animationReadyEvent);
   };
 
@@ -55,7 +50,7 @@ let sketch = (p) => {
     p.rotateY(angle);
     p.rotateZ(angle);
 
-    // Draw the 0" shape
+    // Draw the "0" shape
     p.fill(255, 204, 0);
     p.textFont(font);
     p.textSize(200);
@@ -63,7 +58,7 @@ let sketch = (p) => {
     
     layer.end()
 
-    // Draw the 1" shape
+    // Draw the "1" shape
     p.rotateY(angle, 0)
     p.translate(-100, 0);
     p.fill(192, 192, 192);

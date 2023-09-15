@@ -2,6 +2,13 @@ import p5 from 'p5';
 import mobileCheck from './mobileCheck';
 import './styles.css';
 
+const animationReadyEvent = new Event("animation-ready");
+
+document.addEventListener("animation-ready", () => {
+  const links = document.querySelector('.links');
+  links.style.visibility = 'visible';
+});
+
 const root = '..';
 const isMobile = mobileCheck();
 const MOBILE_PENALTY = 2;
@@ -12,7 +19,6 @@ let angle = 0; // Initial rotation angle
 let width = Math.min(window.innerWidth, 450);
 let height = width * 1.1;
 let font;
-let canvas;
 let layer;
 
 let sketch = (p) => {    
@@ -23,8 +29,10 @@ let sketch = (p) => {
   p.setup = () => {
     p.pixelDensity(1);
     p.frameRate(isMobile ? FRAMERATE / MOBILE_PENALTY : FRAMERATE);
-    canvas = p.createCanvas(width, height, P5.WEBGL, document.getElementById('myCanvas'));
+    p.createCanvas(width, height, P5.WEBGL, document.getElementById('myCanvas'));
     layer = p.createFramebuffer();
+
+    document.dispatchEvent(animationReadyEvent);
   };
 
   p.draw = () =>{

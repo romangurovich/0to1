@@ -16,7 +16,9 @@ let sketch = (p) => {
     font = p.loadFont(`${root}/fonts/JenrivTitling-Regular.otf`)
   };
 
-  p.setup = () =>{
+  p.setup = () => {
+    p.pixelDensity(1);
+    p.frameRate(30);
     canvas = p.createCanvas(width, height, P5.WEBGL, document.getElementById('myCanvas'));
     layer = p.createFramebuffer();
   };
@@ -28,7 +30,7 @@ let sketch = (p) => {
     p.clear();
 
     // Set rotation angle
-    angle += 0.01;
+    angle += 0.02;
 
     // Rotate around the Y-axis
     p.rotateY(angle);

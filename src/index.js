@@ -4,12 +4,14 @@ import './styles.css';
 
 const animationReadyEvent = new Event("animation-ready");
 
-document.addEventListener("animation-ready", () => {
-  console.log("listened ", Date.now());
-  const links = document.querySelector('.links');
-  links.style.visibility = 'visible';
-  console.log(links);
-}, { once: true });
+const listenForAnimationStart = () => {
+  document.addEventListener("animation-ready", () => {
+    console.log("listened ", Date.now());
+    const links = document.querySelector('.links');
+    links.style.visibility = 'visible';
+    console.log(links);
+  }, { once: true });
+};
 
 const root = '..';
 const isMobile = mobileCheck();
@@ -17,6 +19,7 @@ const MOBILE_PENALTY = 2;
 const FRAMERATE = 60;
 const ANGLE_SHIFT = 0.01;
 
+let P5;
 let angle = 0; // Initial rotation angle
 let width = Math.min(window.innerWidth, 450);
 let height = width * 1.1;
@@ -71,4 +74,7 @@ let sketch = (p) => {
   }
 };
 
-const P5 = new p5(sketch);
+window.onload = () => {
+  listenForAnimationStart();
+  P5 = new p5(sketch);
+}

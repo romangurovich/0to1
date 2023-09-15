@@ -5,9 +5,11 @@ import './styles.css';
 const animationReadyEvent = new Event("animation-ready");
 
 document.addEventListener("animation-ready", () => {
+  console.log("listened ", Date.now());
   const links = document.querySelector('.links');
   links.style.visibility = 'visible';
-});
+  console.log(links);
+}, { once: true });
 
 const root = '..';
 const isMobile = mobileCheck();
@@ -32,6 +34,8 @@ let sketch = (p) => {
     p.createCanvas(width, height, P5.WEBGL, document.getElementById('myCanvas'));
     layer = p.createFramebuffer();
 
+    console.log("before ", document.querySelector('.links').cloneNode());
+    console.log("dispatched ", Date.now());
     document.dispatchEvent(animationReadyEvent);
   };
 

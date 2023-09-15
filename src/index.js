@@ -4,13 +4,13 @@ import './styles.css';
 
 const root = '..';
 const isMobile = mobileCheck();
-const MOBILE_PENALTY = 3;
-const FRAMERATE = 30;
-const ANGLE_SHIFT = 0.02;
+const MOBILE_PENALTY = 2;
+const FRAMERATE = 60;
+const ANGLE_SHIFT = 0.01;
 
 let angle = 0; // Initial rotation angle
-let width = 524;
-let height = 524;
+let width = Math.min(window.innerWidth, 450);
+let height = width * 1.1;
 let font;
 let canvas;
 let layer;
@@ -55,7 +55,7 @@ let sketch = (p) => {
     p.textFont(font);
     p.textSize(200);
     p.text("1", 50, 50);
-    p.image(layer, 0, 0,width / 2, height / 2)
+    p.image(layer, 45, 10, width / 2, height / 2)
   }
 };
 

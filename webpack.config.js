@@ -8,7 +8,7 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    devtool: isProd ? 'source-map' : 'eval-source-map',
+    devtool: isProd ? 'source-map' : 'eval-cheap-module-source-map',
     devServer: {
         static: path.join(__dirname, 'dist'),
         https: false,

@@ -1,5 +1,6 @@
 const path = require('path');
 const TerserPlugin = require("terser-webpack-plugin");
+const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
     entry: './src/index.js',
@@ -7,7 +8,7 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    devtool: 'inline-source-map',
+    devtool: isProd ? 'source-map' : 'eval-source-map',
     devServer: {
         static: path.join(__dirname, 'dist'),
         https: false,
@@ -49,5 +50,5 @@ module.exports = {
             },
         ],
     },
-    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+    mode: isProd ? 'production' : 'development',
 };

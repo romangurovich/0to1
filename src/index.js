@@ -1,8 +1,12 @@
-
 import p5 from 'p5';
+import mobileCheck from './mobileCheck';
 import './styles.css';
 
 const root = '..';
+const isMobile = mobileCheck();
+const MOBILE_PENALTY = 3;
+const FRAMERATE = 30;
+const ANGLE_SHIFT = 0.02;
 
 let angle = 0; // Initial rotation angle
 let width = 524;
@@ -18,7 +22,7 @@ let sketch = (p) => {
 
   p.setup = () => {
     p.pixelDensity(1);
-    p.frameRate(30);
+    p.frameRate(isMobile ? FRAMERATE / MOBILE_PENALTY : FRAMERATE);
     canvas = p.createCanvas(width, height, P5.WEBGL, document.getElementById('myCanvas'));
     layer = p.createFramebuffer();
   };
@@ -30,7 +34,7 @@ let sketch = (p) => {
     p.clear();
 
     // Set rotation angle
-    angle += 0.02;
+    angle += isMobile ? ANGLE_SHIFT * MOBILE_PENALTY : ANGLE_SHIFT;
 
     // Rotate around the Y-axis
     p.rotateY(angle);

@@ -6,7 +6,7 @@ const animationReadyEvent = new Event('animation-ready');
 
 const listenForAnimationStart = () => {
   document.addEventListener('animation-ready', () => {
-    const links = document.querySelector('.links');
+    const links = document.querySelector('body');
     links.style.visibility = 'visible';
   }, { once: true });
 };

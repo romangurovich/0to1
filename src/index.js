@@ -26,7 +26,7 @@ let layer;
 
 let sketch = (p) => {    
   p.preload = () => {
-    font = p.loadFont(`${root}/fonts/JenrivTitling-Regular.otf`)
+    font = p.loadFont(`${root}/fonts/0to1.otf`)
   };
 
   p.setup = () => {

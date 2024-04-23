@@ -7,15 +7,15 @@ def image_to_pointillism(image_path, output_path, threshold=128):
     gray_image = original_image.convert("L")
 
     # Create a canvas
-    canvas = Image.new("L", gray_image.size, 255)
+    canvas = Image.new("RGB", gray_image.size, (0, 0, 0))
     draw = ImageDraw.Draw(canvas)
 
     # Load the numerals as brush strokes
     numeral_0 = Image.open("../dist/numeral_0.png")
     numeral_1 = Image.open("../dist/numeral_1.png")
 
-    brush_size_x = 10
-    brush_size_y = 12
+    brush_size_x = 15
+    brush_size_y = 18
 
     # Iterate over image regions and place numerals based on intensity
     for y in range(0, gray_image.height, brush_size_y):
@@ -25,9 +25,9 @@ def image_to_pointillism(image_path, output_path, threshold=128):
             average_color = int(np.mean(region))
 
             if average_color < threshold:
-                draw.bitmap((x,y), numeral_0, fill=0)
+                draw.bitmap((x,y), numeral_0, fill=(0, 128, 0))
             else:
-                draw.bitmap((x, y), numeral_1, fill=0)
+                draw.bitmap((x, y), numeral_1, fill=(0, 255, 0))
 
     # Save or display the result
     canvas.save(output_path)

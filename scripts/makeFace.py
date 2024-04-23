@@ -7,7 +7,7 @@ def image_to_pointillism(image_path, output_path, threshold=128):
     gray_image = original_image.convert("L")
 
     # Create a canvas
-    canvas = Image.new("RGB", gray_image.size, (0, 0, 0))
+    canvas = Image.new("RGB", gray_image.size, (10, 10, 10))
     draw = ImageDraw.Draw(canvas)
 
     # Load the numerals as brush strokes
